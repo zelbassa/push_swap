@@ -6,13 +6,13 @@
 /*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:17:59 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/22 15:42:27 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/01/22 18:32:25 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_int(const char *str)
+int	is_int(char *str)
 {
 	int	i;
 
@@ -66,4 +66,38 @@ int	is_sorted(int **stack, int len)
 		i++;
 	}
 	return (1);
+}
+
+void	finish_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
+{
+	int	max_index;
+
+	while (*len_b != 0)
+	{
+		max_index = find_max(stack_b, *len_b);
+		if (max_index > *len_b / 2)
+		{
+			push_down(stack_b, len_b, max_index);
+		}
+		else
+		{
+			push_up(stack_b, len_b, max_index);
+		}
+		pa(stack_a, stack_b, len_a, len_b);
+	}
+}
+
+void	show_stack(int **stack_a, int **stack_b, int length)
+{
+	if (stack_a)
+	{
+		for (int i = 0; i < length; i++)
+			printf("Stack_a[%d]: %d\n", i, (*stack_a)[i]);
+	}
+	if (stack_b)
+	{
+		printf("-------------\n");
+		for (int i = 0; i < length; i++)
+			printf("Stack_b[%d]: %d\n", i, (*stack_b)[i]);
+	}
 }

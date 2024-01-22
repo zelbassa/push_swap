@@ -1,7 +1,9 @@
 NAME	= push_swap
 LIBFT	= libft/libft.a
 CFLAGS	= -Wall -Wextra -Werror -I.
-FILES	= push_swap.c selection_sort.c
+FILES	= mandatory/push_swap.c mandatory/selection_sort.c \
+			mandatory/utils_1.c mandatory/utils_2.c mandatory/utils_3.c \
+			mandatory/utils_4.c mandatory/utils_5.c mandatory/utils_6.c
 OBJ		= $(FILES:.c=.o)
 CC		= gcc -fsanitize=address
 
@@ -9,9 +11,6 @@ all: $(NAME)
 
 $(LIBFT):
 	cd libft && make
-
-$(PRINTF):
-	cd ft_printf && make
 
 $(NAME): $(OBJ) $(LIBFT) $(PRINTF)
 	$(CC) $(CFLAGS) $(OBJ) -Llibft -lft -o $(NAME)

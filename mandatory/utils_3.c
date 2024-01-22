@@ -6,7 +6,7 @@
 /*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:31:04 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/22 15:43:08 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/01/22 18:27:31 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,20 @@ void	rrb(int	**stack_b, int len_b)
 	}
 	(*stack_b)[0] = tmp;
 	ft_putstr("rrb\n");
+}
+
+int	find_max(int **stack, int length)
+{
+	int	i;
+	int	max_index;
+
+	max_index = 0;
+	i = 1;
+	while (i < length)
+	{
+		if ((*stack)[i] > (*stack)[max_index])
+			max_index = i;
+		i ++;
+	}
+	return (max_index);
 }

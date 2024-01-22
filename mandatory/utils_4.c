@@ -6,13 +6,13 @@
 /*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:34:57 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/22 15:57:48 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/01/22 18:34:20 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	set_tokens(int **tokens, int **av)
+int	set_tokens(char **tokens, int **av)
 {
 	int	i;
 
@@ -74,4 +74,18 @@ int	multiple_args(char **av, int ac, int **stack)
 		}
 		j++;
 	}
+}
+
+int	ft_sqrt(int nb)
+{
+	int	i;
+
+	i = 1;
+	while (i * i <= nb)
+	{
+		if (i * i == nb)
+			return (i);
+		i ++;
+	}
+	return (i - 1);
 }

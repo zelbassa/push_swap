@@ -6,7 +6,7 @@
 /*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:00:45 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/22 16:04:23 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/01/22 18:27:35 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,24 @@ void	sort_three(int **stack, char id)
 		else
 			sb(stack, 3);
 	}
+}
+
+int	is_sorted(int *stack, int len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len - 1)
+	{
+		if (stack[i] > stack[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	pre_sort_b(int **stack_b, int len_b)
+{
+	if ((*stack_b)[0] < (*stack_b)[1])
+		sb(stack_b, len_b);
 }
