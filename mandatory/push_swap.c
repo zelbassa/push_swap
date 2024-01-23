@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:17:31 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/22 18:28:41 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/01/23 04:01:28 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	get_sorted_stack(int **sorted_stack, int **stack_a, int len)
 {
-	int *placeholder;
-	int i;
+	int	*placeholder;
+	int	i;
 
 	i = 0;
 	placeholder = malloc(sizeof(int) * len);
@@ -38,7 +38,7 @@ void	chunk_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
 	get_sorted_stack(&sorted_stack, stack_a, *len_a);
 	chunk_start = 0;
 	chunk_end = ft_sqrt(length);
-	while (*len_a > 3)
+	while (*len_a > 0)
 	{
 		if ((*stack_a)[0] <= sorted_stack[chunk_end] &&
 			(*stack_a)[0] >= sorted_stack[chunk_start])
@@ -47,7 +47,8 @@ void	chunk_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
 			pre_sort_b(stack_b, *len_b);
 			if (chunk_end < length - 1)
 				chunk_end++;
-			chunk_start ++;
+			if (chunk_start < length - ft_sqrt(length))
+				chunk_start ++;
 		}
 		else if ((*stack_a)[0] < sorted_stack[chunk_start])
 		{
@@ -55,7 +56,8 @@ void	chunk_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
 			rb(stack_b, *len_b);
 			if (chunk_end < length - 1)
 				chunk_end++;
-			chunk_start ++;
+			if (chunk_start < length - ft_sqrt(length))
+				chunk_start ++;
 		}
 		else
 			ra(stack_a, *len_a);
@@ -63,11 +65,19 @@ void	chunk_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
 	finish_sort(stack_a, stack_b, len_a, len_b);
 }
 
+void	fill_b(int **stack_b, int len)
+{
+	while (len-- > 0)
+		(*stack_b)[len] = 0;
+}
+
 void	sort(int **stack_a, int **stack_b, int len)
 {
 	int	len_a;
 	int	len_b;
 
+	if (len == 1)
+		return ;
 	len_a = len;
 	len_b = 0;
 	if (len == 2)
@@ -78,6 +88,35 @@ void	sort(int **stack_a, int **stack_b, int len)
 		chunk_sort(stack_a, stack_b, &len_a, &len_b);
 }
 
+int	has_duplicates(int **stack, int len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (stack == NULL)
+		return (1);
+	while (i < len - 1)
+	{
+		j = i + 1;
+		while (j < len)
+		{
+			if ((*stack)[i] != (*stack)[j])
+				j ++;
+			else
+				return (1);
+		}
+		i ++;
+	}
+	return (0);
+}
+
+static void	error(void)
+{
+	ft_putstr("Error\n");
+	exit(0);
+}
+
 int	main(int ac, char **av)
 {
 	int	*stack_a;
@@ -85,22 +124,20 @@ int	main(int ac, char **av)
 	int	len;
 
 	if (ac < 2)
-	{
-		ft_putstr("Error\n");
-		return (0);
-	}
+		error();
 	stack_a = NULL;
-	stack_b = NULL;
 	len = ac - 1;
 	if (ac == 2)
 		len = single_arg(av, &stack_a);
 	else
-		len = multiple_args(av, ac, &stack_a);
-	if (is_sorted(&stack_a, len) == 1)
-		return (0);
+		multiple_args(av, ac, &stack_a);
+	stack_b = malloc(sizeof(int) * len);
+	fill_b(&stack_b, len);
+	if (is_sorted(&stack_a, len) == 1 || has_duplicates(&stack_a, len))
+		error();
 	else
 		sort(&stack_a, &stack_b, len);
-	free(stack_a);
-	free(stack_b);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

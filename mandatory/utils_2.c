@@ -3,68 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:24:31 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/22 18:27:29 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/01/23 03:58:09 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pb(int **stack_a, int **stack_b, int *len_a, int *len_b)
+void	pb(int **src, int **dest, int *len_src, int *len_dest)
 {
 	int	i;
 	int	j;
-	int	tmp;
+	int	placeholder;
 
 	i = 0;
 	j = 0;
-	tmp = (*stack_a)[0];
-	while (i < *len_a - 1)
+	placeholder = (*src)[0];
+	while (i < (*len_src) - 1)
 	{
-		(*stack_a)[i] = (*stack_a)[i + 1];
+		(*src)[i] = (*src)[i + 1];
 		i++;
 	}
-	j = *len_b;
+	j = *len_dest;
 	i = 0;
 	while (j > 0)
 	{
-		(*stack_b)[j] = (*stack_b)[j - 1];
+		(*dest)[j] = (*dest)[j - 1];
 		j--;
 	}
-	(*stack_b)[0] = tmp;
-	(*len_a)--;
-	(*len_b)++;
-	(*stack_a)[*len_a - 1] = 0;
+	(*src)[*len_src - 1] = 0;
+	(*len_src)--;
+	(*len_dest)++;
+	(*dest)[0] = placeholder;
 	ft_putstr("pb\n");
 }
 
-void	pa(int **stack_a, int **stack_b, int *len_a, int *len_b)
+void	pa(int **dest, int **src, int *len_src, int *len_dest)
 {
 	int	i;
 	int	j;
-	int	tmp;
+	int	placeholder;
 
-	i = 0;
 	j = 0;
-	tmp = (*stack_b)[0];
-	while (i < *len_b - 1)
+	i = 0;
+	placeholder = (*src)[0];
+	while (i < (*len_src) - 1)
 	{
-		(*stack_b)[i] = (*stack_b)[i + 1];
+		(*src)[i] = (*src)[i + 1];
 		i++;
 	}
-	j = *len_a;
 	i = 0;
+	j = *len_dest;
 	while (j > 0)
 	{
-		(*stack_a)[j] = (*stack_a)[j - 1];
+		(*dest)[j] = (*dest)[j - 1];
 		j--;
 	}
-	(*stack_a)[0] = tmp;
-	(*len_b)--;
-	(*len_a)++;
-	(*stack_b)[*len_b - 1] = 0;
+	(*src)[*len_src - 1] = 0;
+	(*len_src)--;
+	(*len_dest)++;
+	(*dest)[0] = placeholder;
 	ft_putstr("pa\n");
 }
 

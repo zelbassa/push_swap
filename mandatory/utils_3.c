@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:31:04 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/22 18:27:31 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/01/23 03:53:27 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ void	ra(int **stack_a, int len_a)
 	int	tmp;
 
 	i = 0;
+	if (len_a < 2)
+		return ;
+	if (len_a == 2)
+	{
+		sa(stack_a, len_a);
+		return ;
+	}
 	tmp = (*stack_a)[0];
 	while (i < len_a - 1)
 	{
@@ -34,6 +41,13 @@ void	rb(int **stack_b, int len_b)
 	int	tmp;
 
 	i = 0;
+	if (len_b < 2)
+		return ;
+	if (len_b == 2)
+	{
+		sa(stack_b, len_b);
+		return ;
+	}
 	tmp = (*stack_b)[0];
 	while (i < len_b - 1)
 	{
@@ -49,6 +63,13 @@ void	rra(int	**stack_a, int len_a)
 	int	i;
 	int	tmp;
 
+	if (len_a < 2)
+		return ;
+	if (len_a == 2)
+	{
+		sa(stack_a, len_a);
+		return ;
+	}
 	i = len_a - 1;
 	tmp = (*stack_a)[len_a - 1];
 	while (i > 0)
@@ -67,6 +88,13 @@ void	rrb(int	**stack_b, int len_b)
 
 	i = len_b - 1;
 	tmp = (*stack_b)[len_b - 1];
+	if (len_b < 2)
+		return ;
+	if (len_b == 2)
+	{
+		sb(stack_b, len_b);
+		return ;
+	}
 	while (i > 0)
 	{
 		(*stack_b)[i] = (*stack_b)[i - 1];

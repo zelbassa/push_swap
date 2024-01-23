@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils_4.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:34:57 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/22 18:34:20 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/01/22 21:34:09 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	set_tokens(char **tokens, int **av)
+int	set_tokens(char **tokens)
 {
 	int	i;
 
@@ -37,7 +37,10 @@ int	single_arg(char **av, int **stack)
 	int		i;
 	char	**tokens;
 
-	i = set_tokens(tokens, av);
+	tokens = ft_split(av[1], ' ');
+	i = set_tokens(tokens);
+	if (i == 0)
+		return (0);
 	*stack = malloc(sizeof(int) * i);
 	if (*stack == NULL)
 		return (0);
@@ -50,7 +53,7 @@ int	single_arg(char **av, int **stack)
 	return (i);
 }
 
-int	multiple_args(char **av, int ac, int **stack)
+void	multiple_args(char **av, int ac, int **stack)
 {
 	int	i;
 	int	j;
