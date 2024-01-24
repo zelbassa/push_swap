@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:56:05 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 02:29:42 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:35:54 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,27 @@ void	error(void)
 {
 	ft_putstr("Error\n");
 	exit(0);
+}
+
+int	ind_min(int **stack, int len)
+{
+	int	i;
+	int	k;
+	int	min_value;
+
+	i = 0;
+	k = 1;
+	min_value = 0;
+	while (i < len - 1 && k + i < len)
+	{
+		if ((*stack)[i] < (*stack)[i + k])
+			k ++;
+		else
+		{
+			i = k;
+			k ++;
+		}
+		min_value = i;
+	}
+	return (min_value);
 }

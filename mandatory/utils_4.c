@@ -6,30 +6,95 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:34:57 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 02:50:02 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:13:28 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	set_tokens(char **tokens)
+static int	count_words(char *str)
+{
+	int	count;
+	int	in_word;
+
+	in_word = 0;
+	count = 0;
+	while (*str)
+	{
+		if (ft_strchr(str, ' ') || ft_strchr(str, '\t'))
+			in_word = 0;
+		else if (!in_word)
+		{
+			count++;
+			in_word = 1;
+		}
+		str++;
+	}
+	return (count);
+}
+
+/*
+void multiple_args(char **av, int ac, int **stack) {
+    int i = 0;
+    int total_elements = 0;
+
+    // Count total elements across all arguments
+    for (int j = 1; j < ac; j++) {
+        total_elements += count_words(av[j]);
+    }
+
+    *stack = malloc(sizeof(int) * total_elements);
+    if (*stack == NULL) {
+        return;  // Handle memory allocation error
+    }
+
+    // Fill the stack with elements from each argument
+    for (int j = 1; j < ac; j++) {
+        char *arg = av[j];
+        char *token = strtok(arg, " ");  // Split argument by spaces
+        while (token != NULL) {
+            (*stack)[i++] = atoi(token);  // Convert token to integer and add to stack
+            token = strtok(NULL, " ");
+        }
+    }
+} */
+
+void	multiple_args(char **av, int ac, int **stack)
 {
 	int	i;
+	int	j;
+	int	len;
+	char **tokens;
 
+	j = 1;
 	i = 0;
-	if (tokens)
+	while (j < ac)
 	{
-		while (tokens[i])
+		len = count_words(av[j]);
+		j++;
+	}
+	j = 1;
+	*stack = malloc(sizeof(int) * len);
+	if (*stack == NULL)
+		return ;
+	while (j < ac)
+	{
+		tokens = ft_split(av[j], ' ');
+		while (tokens[i] != NULL)
 		{
 			if (is_int(tokens[i]) && within_range(tokens[i]))
+			{
+				(*stack)[i] = ft_atoi(tokens[i]);
 				i++;
+			}
 			else
-				return (0);
+			{
+				free_stack(stack);
+				error();
+			}
 		}
+		j ++;
 	}
-	if (i < 2)
-		return (0);
-	return (i);
 }
 
 int	single_arg(char **av, int **stack)
@@ -47,79 +112,19 @@ int	single_arg(char **av, int **stack)
 	i = 0;
 	while (tokens[i])
 	{
-		(*stack)[i] = ft_atoi(tokens[i]);
-		i++;
-	}
-	return (i);
-}
-
-#include <string.h> // for strtok and strchr
-#include <stdlib.h> // for atoi
-
-void	multiple_args(char **av, int ac, int **stack)
-{
-    int	i;
-    int	j;
-    char *token;
-    char *rest;
-
-    j = 1;
-    i = 0;
-    *stack = malloc(sizeof(int) * (ac - 1));
-    if (*stack == NULL)
-        return ;
-    while (j < ac)
-    {
-        // Check if a space exists in the argument string
-        if (strchr(av[j], ' '))
-        {
-            printf("Error\n");
-            free_stack(stack);
-			exit(0);
-        }
-        rest = av[j];
-        while ((token = ft_split(rest, " ", &rest)))
-        {
-            if (is_int(token) && within_range(token))
-            {
-                (*stack)[i] = ft_atoi(token);
-                i++;
-            }
-            else
-            {
-                free_stack(stack);
-                return ;
-            }
-        }
-        j++;
-    }
-}
-
-/* void	multiple_args(char **av, int ac, int **stack)
-{
-	int	i;
-	int	j;
-
-	j = 1;
-	i = 0;
-	*stack = malloc(sizeof(int) * (ac - 1));
-	if (*stack == NULL)
-		return ;
-	while (j < ac)
-	{
-		if (is_int(av[j]) && within_range(av[j]))
+		if (is_int(tokens[i]) && within_range(tokens[i]))
 		{
-			(*stack)[i] = ft_atoi(av[j]);
+			(*stack)[i] = ft_atoi(tokens[i]);
 			i++;
 		}
 		else
 		{
 			free_stack(stack);
-			return ;
+			return (0);
 		}
-		j++;
 	}
-} */
+	return (i);
+}
 
 int	ft_sqrt(int nb)
 {
@@ -130,7 +135,7 @@ int	ft_sqrt(int nb)
 	{
 		if (i * i == nb)
 			return (i);
-		i ++;
+		i++;
 	}
 	return (i - 1);
 }

@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:59:17 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 02:29:48 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:46:53 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,19 @@ void	chunk_sort(int **stack_a, int **stack_b, int *len_a, int *len_b);
 void	get_sorted_stack(int **sorted_stack, int **stack_a, int len);
 void	sort_two(int **stack_a, int len, char id);
 void	sort_three(int **stack, char id);
+void	sort_four(int **stack_a, int **stack_b, int *len_a, int *len_b);
+void	sort_five(int **stack_a, int **stack_b, int *len_a, int *len_b);
 int		is_sorted(int **stack, int len);
 int		is_int(char *str);
 void	finish_sort(int **stack_a, int **stack_b, int *len_a, int *len_b);
 int		find_max(int **stack, int len);
+int		find_min(int **stack, int len);
 int		within_range(const char *str);
 void	free_stack(int **stack);
 int		has_duplicates(int **stack, int len);
 void	error(void);
 void	fill_b(int **stack_b, int len);
 void	sort(int **stack_a, int **stack_b, int len);
+void	fill_elements(char *av, int **stack, int *i);
 
 #endif

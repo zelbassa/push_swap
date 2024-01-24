@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:17:31 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 02:41:03 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:35:14 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	main(int ac, char **av)
 	int	len;
 
 	if (ac < 2)
-		error();
+		return (0);
 	stack_a = NULL;
 	len = ac - 1;
 	if (ac == 2)
@@ -93,7 +93,7 @@ int	main(int ac, char **av)
 		multiple_args(av, ac, &stack_a);
 	stack_b = malloc(sizeof(int) * len);
 	fill_b(&stack_b, len);
-	if (has_duplicates(&stack_a, len))
+	if (has_duplicates(&stack_a, len) || len == 0)
 		error();
 	if (is_sorted(&stack_a, len) == 1)
 		return (0);

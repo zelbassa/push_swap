@@ -3,7 +3,8 @@ LIBFT	= libft/libft.a
 CFLAGS	= -Wall -Wextra -Werror -I.
 FILES	= mandatory/push_swap.c mandatory/selection_sort.c \
 			mandatory/utils_1.c mandatory/utils_2.c mandatory/utils_3.c \
-			mandatory/utils_4.c mandatory/utils_5.c mandatory/utils_6.c
+			mandatory/utils_4.c mandatory/utils_5.c mandatory/utils_6.c \
+			mandatory/utils_7.c
 OBJ		= $(FILES:.c=.o)
 CC		= gcc -fsanitize=address
 

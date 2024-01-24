@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:00:45 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/22 21:32:51 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:28:58 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,62 @@ void	sort_three(int **stack, char id)
 		else
 			sb(stack, 3);
 	}
+}
+
+void	sort_four(int **stack_a, int **stack_b, int	*len_a, int *len_b)
+{
+	int	min_index;
+
+	min_index = find_min(stack_a, 4);
+	if (min_index < 2)
+	{
+		if (min_index == 1)
+			sa(stack_a, 4);
+		if (!is_sorted(stack_a, 4))
+			pb(stack_a, stack_b, len_a, len_b);
+		else
+			return ;
+	}
+	else
+	{
+		if (min_index == 2)
+			rra(stack_a, 4);
+		rra(stack_a, 4);
+		if (!is_sorted(stack_a, 4))
+			pb(stack_a, stack_b, len_a, len_b);
+		else
+			return ;
+	}
+	sort_three(stack_a, 'a');
+	pa(stack_a, stack_b, len_b, len_a);
+}
+
+void	sort_five(int **stack_a, int **stack_b, int *len_a, int *len_b)
+{
+	int	min_index;
+
+	min_index = find_min(stack_a, 5);
+	if (min_index < 2)
+	{
+		if (min_index == 1)
+			sa(stack_a, 5);
+		if (!is_sorted(stack_a, 5))
+			pb(stack_a, stack_b, len_a, len_b);
+		else
+			return ;
+	}
+	else
+	{
+		if (min_index == 2)
+			rra(stack_a, 5);
+		rra(stack_a, 5);
+		if (!is_sorted(stack_a, 5))
+			pb(stack_a, stack_b, len_a, len_b);
+		else
+			return ;
+	}
+	sort_four(stack_a, stack_b, len_a, len_b);
+	pa(stack_a, stack_b, len_b, len_a);
 }
 
 void	pre_sort_b(int **stack_b, int len_b)
