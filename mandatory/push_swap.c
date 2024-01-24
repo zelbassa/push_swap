@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:17:31 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 02:35:54 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 02:41:03 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	get_sorted_stack(int **sorted_stack, int **stack_a, int len)
 
 void	chunk_sort_iteration(t_chunk_sort_data *data)
 {
-	if ((*data->stack_a)[0] <= data->sorted_stack[data->chunk_end] &&
-		(*data->stack_a)[0] >= data->sorted_stack[data->chunk_start])
+	if (data->stack_a[0][0] <= data->sorted_stack[data->chunk_end] &&
+		data->stack_a[0][0] >= data->sorted_stack[data->chunk_start])
 	{
 		pb(data->stack_a, data->stack_b, data->len_a, data->len_b);
 		pre_sort_b(data->stack_b, *(data->len_b));
@@ -39,7 +39,7 @@ void	chunk_sort_iteration(t_chunk_sort_data *data)
 		if (data->chunk_start < data->length - ft_sqrt(data->length))
 			data->chunk_start++;
 	}
-	else if ((*data->stack_a)[0] < data->sorted_stack[data->chunk_start])
+	else if (data->stack_a[0][0] < data->sorted_stack[data->chunk_start])
 	{
 		pb(data->stack_a, data->stack_b, data->len_a, data->len_b);
 		rb(data->stack_b, *(data->len_b));
@@ -60,9 +60,9 @@ void	chunk_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
 	int					length;
 	t_chunk_sort_data	data;
 
-	sorted_stack = malloc(sizeof(int) * (*len_a));
 	chunk_start = 0;
 	length = *len_a;
+	get_sorted_stack(&sorted_stack, stack_a, *len_a);
 	chunk_end = ft_sqrt(length);
 	data.stack_a = stack_a;
 	data.stack_b = stack_b;
@@ -72,7 +72,6 @@ void	chunk_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
 	data.chunk_start = chunk_start;
 	data.chunk_end = chunk_end;
 	data.length = length;
-	get_sorted_stack(&sorted_stack, stack_a, *len_a);
 	while (*(data.len_a) > 0)
 		chunk_sort_iteration(&data);
 	finish_sort(stack_a, stack_b, len_a, len_b);
@@ -94,8 +93,10 @@ int	main(int ac, char **av)
 		multiple_args(av, ac, &stack_a);
 	stack_b = malloc(sizeof(int) * len);
 	fill_b(&stack_b, len);
-	if (is_sorted(&stack_a, len) == 1 || has_duplicates(&stack_a, len))
+	if (has_duplicates(&stack_a, len))
 		error();
+	if (is_sorted(&stack_a, len) == 1)
+		return (0);
 	else
 		sort(&stack_a, &stack_b, len);
 	free_stack(&stack_a);

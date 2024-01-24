@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:34:57 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 02:23:09 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 02:50:02 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,49 @@ int	single_arg(char **av, int **stack)
 	return (i);
 }
 
+#include <string.h> // for strtok and strchr
+#include <stdlib.h> // for atoi
+
 void	multiple_args(char **av, int ac, int **stack)
+{
+    int	i;
+    int	j;
+    char *token;
+    char *rest;
+
+    j = 1;
+    i = 0;
+    *stack = malloc(sizeof(int) * (ac - 1));
+    if (*stack == NULL)
+        return ;
+    while (j < ac)
+    {
+        // Check if a space exists in the argument string
+        if (strchr(av[j], ' '))
+        {
+            printf("Error\n");
+            free_stack(stack);
+			exit(0);
+        }
+        rest = av[j];
+        while ((token = ft_split(rest, " ", &rest)))
+        {
+            if (is_int(token) && within_range(token))
+            {
+                (*stack)[i] = ft_atoi(token);
+                i++;
+            }
+            else
+            {
+                free_stack(stack);
+                return ;
+            }
+        }
+        j++;
+    }
+}
+
+/* void	multiple_args(char **av, int ac, int **stack)
 {
 	int	i;
 	int	j;
@@ -77,7 +119,7 @@ void	multiple_args(char **av, int ac, int **stack)
 		}
 		j++;
 	}
-}
+} */
 
 int	ft_sqrt(int nb)
 {
