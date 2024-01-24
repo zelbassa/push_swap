@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:17:31 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/23 04:01:28 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 02:35:54 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,94 +27,55 @@ void	get_sorted_stack(int **sorted_stack, int **stack_a, int len)
 	*sorted_stack = selection_sort(placeholder, len);
 }
 
+void	chunk_sort_iteration(t_chunk_sort_data *data)
+{
+	if ((*data->stack_a)[0] <= data->sorted_stack[data->chunk_end] &&
+		(*data->stack_a)[0] >= data->sorted_stack[data->chunk_start])
+	{
+		pb(data->stack_a, data->stack_b, data->len_a, data->len_b);
+		pre_sort_b(data->stack_b, *(data->len_b));
+		if (data->chunk_end < data->length - 1)
+			data->chunk_end++;
+		if (data->chunk_start < data->length - ft_sqrt(data->length))
+			data->chunk_start++;
+	}
+	else if ((*data->stack_a)[0] < data->sorted_stack[data->chunk_start])
+	{
+		pb(data->stack_a, data->stack_b, data->len_a, data->len_b);
+		rb(data->stack_b, *(data->len_b));
+		if (data->chunk_end < data->length - 1)
+			data->chunk_end++;
+		if (data->chunk_start < data->length - ft_sqrt(data->length))
+			data->chunk_start++;
+	}
+	else
+		ra(data->stack_a, *(data->len_a));
+}
+
 void	chunk_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
 {
-	int	chunk_start;
-	int	chunk_end;
-	int	*sorted_stack;
-	int	length;
+	int					chunk_start;
+	int					chunk_end;
+	int					*sorted_stack;
+	int					length;
+	t_chunk_sort_data	data;
 
-	length = *len_a;
-	get_sorted_stack(&sorted_stack, stack_a, *len_a);
+	sorted_stack = malloc(sizeof(int) * (*len_a));
 	chunk_start = 0;
+	length = *len_a;
 	chunk_end = ft_sqrt(length);
-	while (*len_a > 0)
-	{
-		if ((*stack_a)[0] <= sorted_stack[chunk_end] &&
-			(*stack_a)[0] >= sorted_stack[chunk_start])
-		{
-			pb(stack_a, stack_b, len_a, len_b);
-			pre_sort_b(stack_b, *len_b);
-			if (chunk_end < length - 1)
-				chunk_end++;
-			if (chunk_start < length - ft_sqrt(length))
-				chunk_start ++;
-		}
-		else if ((*stack_a)[0] < sorted_stack[chunk_start])
-		{
-			pb(stack_a, stack_b, len_a, len_b);
-			rb(stack_b, *len_b);
-			if (chunk_end < length - 1)
-				chunk_end++;
-			if (chunk_start < length - ft_sqrt(length))
-				chunk_start ++;
-		}
-		else
-			ra(stack_a, *len_a);
-	}
+	data.stack_a = stack_a;
+	data.stack_b = stack_b;
+	data.len_a = len_a;
+	data.len_b = len_b;
+	data.sorted_stack = sorted_stack;
+	data.chunk_start = chunk_start;
+	data.chunk_end = chunk_end;
+	data.length = length;
+	get_sorted_stack(&sorted_stack, stack_a, *len_a);
+	while (*(data.len_a) > 0)
+		chunk_sort_iteration(&data);
 	finish_sort(stack_a, stack_b, len_a, len_b);
-}
-
-void	fill_b(int **stack_b, int len)
-{
-	while (len-- > 0)
-		(*stack_b)[len] = 0;
-}
-
-void	sort(int **stack_a, int **stack_b, int len)
-{
-	int	len_a;
-	int	len_b;
-
-	if (len == 1)
-		return ;
-	len_a = len;
-	len_b = 0;
-	if (len == 2)
-		sort_two(stack_a, len_a, 'a');
-	else if (len == 3)
-		sort_three(stack_a, 'a');
-	else
-		chunk_sort(stack_a, stack_b, &len_a, &len_b);
-}
-
-int	has_duplicates(int **stack, int len)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	if (stack == NULL)
-		return (1);
-	while (i < len - 1)
-	{
-		j = i + 1;
-		while (j < len)
-		{
-			if ((*stack)[i] != (*stack)[j])
-				j ++;
-			else
-				return (1);
-		}
-		i ++;
-	}
-	return (0);
-}
-
-static void	error(void)
-{
-	ft_putstr("Error\n");
-	exit(0);
 }
 
 int	main(int ac, char **av)

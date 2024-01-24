@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:17:59 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/23 04:21:18 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 02:22:38 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,9 @@ void	finish_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
 	{
 		max_index = find_max(stack_b, *len_b);
 		if (max_index <= *len_b / 2)
-		{
 			push_up(stack_b, len_b, max_index);
-		}
 		else
-		{
 			push_down(stack_b, len_b, *len_b - max_index);
-		}
 		pa(stack_a, stack_b, len_b, len_a);
 	}
 }

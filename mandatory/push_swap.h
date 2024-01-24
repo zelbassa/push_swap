@@ -6,23 +6,35 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:59:17 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/23 03:58:00 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 02:29:48 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft/libft.h"
-# include <stdlib.h>
 # include <stdio.h>
+# include <stdlib.h>
+
+typedef struct s_chunk_sort_data
+{
+	int	**stack_a;
+	int	**stack_b;
+	int	*len_a;
+	int	*len_b;
+	int	*sorted_stack;
+	int	chunk_start;
+	int	chunk_end;
+	int	length;
+}		t_chunk_sort_data;
 
 int		*selection_sort(int arr[], int size);
 void	sa(int **stack_a, int len_a);
 void	sb(int **stack_b, int len_b);
 void	ra(int **stack_a, int len_a);
 void	rb(int **stack_b, int len_b);
-void	rra(int	**stack_a, int len_a);
-void	rrb(int	**stack_b, int len_b);
+void	rra(int **stack_a, int len_a);
+void	rrb(int **stack_b, int len_b);
 void	pb(int **src, int **dest, int *len_src, int *len_dest);
 void	pa(int **dest, int **src, int *len_src, int *len_dest);
 void	multiple_args(char **av, int ac, int **stack);
@@ -42,7 +54,9 @@ void	finish_sort(int **stack_a, int **stack_b, int *len_a, int *len_b);
 int		find_max(int **stack, int len);
 int		within_range(const char *str);
 void	free_stack(int **stack);
-void	show_stack(int **stack_a, int **stack_b, int length);
 int		has_duplicates(int **stack, int len);
+void	error(void);
+void	fill_b(int **stack_b, int len);
+void	sort(int **stack_a, int **stack_b, int len);
 
 #endif

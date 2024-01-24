@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:56:05 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/23 04:20:47 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 02:29:42 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,14 @@ void	push_down(int **stack_b, int *len_b, int index)
 	}
 }
 
-void	show_stack(int **stack_a, int **stack_b, int length)
+void	fill_b(int **stack_b, int len)
 {
-	if (stack_a)
-	{
-		for (int i = 0; i < length; i++)
-			printf("Stack_a[%d]: %d\n", i, (*stack_a)[i]);
-	}
-	if (stack_b)
-	{
-		printf("-------------\n");
-		for (int i = 0; i < length; i++)
-			printf("Stack_b[%d]: %d\n", i, (*stack_b)[i]);
-	}
+	while (len-- > 0)
+		(*stack_b)[len] = 0;
+}
+
+void	error(void)
+{
+	ft_putstr("Error\n");
+	exit(0);
 }

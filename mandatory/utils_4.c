@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:34:57 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/22 21:34:09 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 02:23:09 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,27 @@ int	ft_sqrt(int nb)
 		i ++;
 	}
 	return (i - 1);
+}
+
+int	has_duplicates(int **stack, int len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (stack == NULL)
+		return (1);
+	while (i < len - 1)
+	{
+		j = i + 1;
+		while (j < len)
+		{
+			if ((*stack)[i] != (*stack)[j])
+				j++;
+			else
+				return (1);
+		}
+		i++;
+	}
+	return (0);
 }

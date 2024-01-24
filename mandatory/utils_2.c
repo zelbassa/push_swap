@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:24:31 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/23 03:58:09 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 02:22:56 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,21 @@ void	sb(int **stack_b, int len_b)
 	(*stack_b)[0] = (*stack_b)[1];
 	(*stack_b)[1] = tmp;
 	ft_putstr("sb\n");
+}
+
+void	sort(int **stack_a, int **stack_b, int len)
+{
+	int	len_a;
+	int	len_b;
+
+	if (len == 1)
+		return ;
+	len_a = len;
+	len_b = 0;
+	if (len == 2)
+		sort_two(stack_a, len_a, 'a');
+	else if (len == 3)
+		sort_three(stack_a, 'a');
+	else
+		chunk_sort(stack_a, stack_b, &len_a, &len_b);
 }
