@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:56:05 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 15:35:54 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 20:46:02 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,16 @@ void	error(void)
 	exit(0);
 }
 
-int	ind_min(int **stack, int len)
+int	is_rev_sorted(int **stack, int len)
 {
 	int	i;
-	int	k;
-	int	min_value;
 
 	i = 0;
-	k = 1;
-	min_value = 0;
-	while (i < len - 1 && k + i < len)
+	while (i < len - 1)
 	{
-		if ((*stack)[i] < (*stack)[i + k])
-			k ++;
-		else
-		{
-			i = k;
-			k ++;
-		}
-		min_value = i;
+		if ((*stack)[i] < (*stack)[i + 1])
+			return (0);
+		i++;
 	}
-	return (min_value);
+	return (1);
 }

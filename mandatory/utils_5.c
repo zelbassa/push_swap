@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:00:45 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 15:28:58 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 20:49:43 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	sort_two(int **stack_a, int len, char id)
 		else
 			sb(stack_a, len);
 	}
+	exit(1);
 }
 
 void	sort_three(int **stack, char id)
@@ -46,6 +47,7 @@ void	sort_three(int **stack, char id)
 		else
 			sb(stack, 3);
 	}
+	exit(1);
 }
 
 void	sort_four(int **stack_a, int **stack_b, int	*len_a, int *len_b)
