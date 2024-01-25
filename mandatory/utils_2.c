@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:24:31 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 15:27:46 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 20:48:53 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ void	sort(int **stack_a, int **stack_b, int len)
 		sort_four(stack_a, stack_b, &len_a, &len_b);
 	else if (len == 5)
 		sort_five(stack_a, stack_b, &len_a, &len_b);
+	if (is_rev_sorted(stack_a, len) == 1)
+		sort_descending(stack_a, stack_b, len);
 	else
 		chunk_sort(stack_a, stack_b, &len_a, &len_b);
 }

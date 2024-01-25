@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:59:17 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 15:46:53 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/24 20:40:11 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,7 @@ void	error(void);
 void	fill_b(int **stack_b, int len);
 void	sort(int **stack_a, int **stack_b, int len);
 void	fill_elements(char *av, int **stack, int *i);
+void	sort_descending(int **stack_a, int **stack_b, int len);
+int		is_rev_sorted(int **stack, int len);
 
 #endif
