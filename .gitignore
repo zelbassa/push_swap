@@ -1,4 +1,4 @@
-./venv
-./bonus
+/venv
+/bonus
 checker_linux
-./push_swap_tester
+/push_swap_tester
