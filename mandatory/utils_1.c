@@ -75,9 +75,7 @@ int	is_sorted(int **stack, int len)
 void	finish_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
 {
 	int	max_index;
-	int	length;
 
-	length = *len_b + *len_a;
 	while (*len_b > 0)
 	{
 		max_index = find_max(stack_b, *len_b);
