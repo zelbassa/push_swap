@@ -75,14 +75,12 @@ int	set_tokens(char **tokens)
 
 void	sort_descending(int **stack_a, int **stack_b, int len)
 {
-	int	i;
 	int	min_index;
 	int	len_a;
 	int	len_b;
 
 	len_a = len;
 	len_b = 0;
-	i = 0;
 	while (len_a > 0)
 	{
 		min_index = find_min(stack_a, len_a);
