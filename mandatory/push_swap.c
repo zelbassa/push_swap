@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:17:31 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 20:48:20 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:45:09 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	get_sorted_stack(int **sorted_stack, int **stack_a, int len)
 		i++;
 	}
 	*sorted_stack = selection_sort(placeholder, len);
-    free_stack(&placeholder);
 }
 
 void	chunk_sort_iteration(t_chunk_sort_data *data)

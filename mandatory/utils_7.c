@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:30:48 by zelbassa          #+#    #+#             */
-/*   Updated: 2024/01/24 20:46:18 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:43:03 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,14 @@ int	set_tokens(char **tokens)
 
 void	sort_descending(int **stack_a, int **stack_b, int len)
 {
+	int	i;
 	int	min_index;
 	int	len_a;
 	int	len_b;
 
 	len_a = len;
 	len_b = 0;
+	i = 0;
 	while (len_a > 0)
 	{
 		min_index = find_min(stack_a, len_a);
@@ -94,4 +96,10 @@ void	sort_descending(int **stack_a, int **stack_b, int len)
 	}
 	while (len_b > 0)
 		pa(stack_a, stack_b, &len_b, &len_a);
+}
+
+void	pre_sort_b(int **stack_b, int len_b)
+{
+	if ((*stack_b)[0] < (*stack_b)[1])
+		sb(stack_b, len_b);
 }

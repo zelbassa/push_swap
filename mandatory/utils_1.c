@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:17:59 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 02:22:38 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:55:14 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int	is_int(char *str)
 	if (!str)
 		return (0);
 	if (str[i] == '-')
-    {
-        if (!str[i + 1])
-            return (0);
+	{
+		if (!str[i + 1])
+			return (0);
 		i++;
-    }
+	}
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
@@ -75,7 +75,9 @@ int	is_sorted(int **stack, int len)
 void	finish_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
 {
 	int	max_index;
+	int	length;
 
+	length = *len_b + *len_a;
 	while (*len_b > 0)
 	{
 		max_index = find_max(stack_b, *len_b);

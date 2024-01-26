@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:24:31 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 20:48:53 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/25 00:32:21 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	pb(int **src, int **dest, int *len_src, int *len_dest)
 	int	placeholder;
 
 	i = 0;
+	j = 0;
 	placeholder = (*src)[0];
 	while (i < (*len_src) - 1)
 	{
@@ -26,6 +27,7 @@ void	pb(int **src, int **dest, int *len_src, int *len_dest)
 		i++;
 	}
 	j = *len_dest;
+	i = 0;
 	while (j > 0)
 	{
 		(*dest)[j] = (*dest)[j - 1];
@@ -44,6 +46,7 @@ void	pa(int **dest, int **src, int *len_src, int *len_dest)
 	int	j;
 	int	placeholder;
 
+	j = 0;
 	i = 0;
 	placeholder = (*src)[0];
 	while (i < (*len_src) - 1)
@@ -51,6 +54,7 @@ void	pa(int **dest, int **src, int *len_src, int *len_dest)
 		(*src)[i] = (*src)[i + 1];
 		i++;
 	}
+	i = 0;
 	j = *len_dest;
 	while (j > 0)
 	{
@@ -105,6 +109,8 @@ void	sort(int **stack_a, int **stack_b, int len)
 		sort_four(stack_a, stack_b, &len_a, &len_b);
 	else if (len == 5)
 		sort_five(stack_a, stack_b, &len_a, &len_b);
+	else if (is_rev_sorted(stack_a, len) == 1)
+		sort_descending(stack_a, stack_b, len);
 	else
 		chunk_sort(stack_a, stack_b, &len_a, &len_b);
 }

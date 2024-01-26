@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:34:57 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/24 20:30:10 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:00:14 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	multiple_args(char **av, int ac, int **stack)
 		len += count_element(av[j]);
 		j++;
 	}
-	if (len > ac - 1)
+	if (len != ac - 1)
 		error();
 	j = 1;
 	*stack = malloc(sizeof(int) * ac - 1);

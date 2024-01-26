@@ -33,18 +33,18 @@ static size_t	word_count(const char *s, char c)
 
 static void	*free_arr(char **arr)
 {
-    while (*arr)
-        free(*arr++);
-    free(arr);
-    return (NULL);
+	while (*arr++)
+		free(*arr);
+	free(arr);
+	return (NULL);
 }
 
 static int	ft_check(size_t len, char ***rest)
 {
-    *rest = malloc(sizeof(char *) * (len + 1));
-    if (*rest == NULL)
-        return (0);
-    return (1);
+	*rest = malloc(sizeof(char *) * (len + 1));
+	if (!*rest)
+		return (0);
+	return (1);
 }
 
 char	**ft_split(char *s, char c)
@@ -54,10 +54,10 @@ char	**ft_split(char *s, char c)
 	size_t	len;
 
 	if (!s)
-        return (NULL);
+		return (NULL);
 	i = 0;
 	if (!ft_check(word_count(s, c), &res))
-        return (NULL);
+		return (NULL);
 	while (*s)
 	{
 		if (*s != c)
