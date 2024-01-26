@@ -19,6 +19,7 @@ void	pb(int **src, int **dest, int *len_src, int *len_dest)
 	int	placeholder;
 
 	i = 0;
+	j = 0;
 	placeholder = (*src)[0];
 	while (i < (*len_src) - 1)
 	{
@@ -26,6 +27,7 @@ void	pb(int **src, int **dest, int *len_src, int *len_dest)
 		i++;
 	}
 	j = *len_dest;
+	i = 0;
 	while (j > 0)
 	{
 		(*dest)[j] = (*dest)[j - 1];
@@ -44,6 +46,7 @@ void	pa(int **dest, int **src, int *len_src, int *len_dest)
 	int	j;
 	int	placeholder;
 
+	j = 0;
 	i = 0;
 	placeholder = (*src)[0];
 	while (i < (*len_src) - 1)
@@ -51,6 +54,7 @@ void	pa(int **dest, int **src, int *len_src, int *len_dest)
 		(*src)[i] = (*src)[i + 1];
 		i++;
 	}
+	i = 0;
 	j = *len_dest;
 	while (j > 0)
 	{

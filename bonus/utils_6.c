@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_6.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:56:05 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/26 10:05:34 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/01/24 20:46:02 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,20 @@ void	fill_b(int **stack_b, int len)
 
 void	error(void)
 {
-	write(2, "Error\n", 6);
+	ft_putstr("Error\n");
 	exit(0);
 }
 
-void	pre_sort_b(int **stack_b, int len_b)
+int	is_rev_sorted(int **stack, int len)
 {
-	if ((*stack_b)[0] < (*stack_b)[1])
-		sb(stack_b, len_b);
+	int	i;
+
+	i = 0;
+	while (i < len - 1)
+	{
+		if ((*stack)[i] < (*stack)[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }

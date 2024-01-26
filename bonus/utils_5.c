@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_5.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:00:45 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/26 10:05:15 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/01/24 20:49:43 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	sort_four(int **stack_a, int **stack_b, int	*len_a, int *len_b)
 			sa(stack_a, 4);
 		if (!is_sorted(stack_a, 4))
 			pb(stack_a, stack_b, len_a, len_b);
+		else
+			return ;
 	}
 	else
 	{
@@ -67,47 +69,43 @@ void	sort_four(int **stack_a, int **stack_b, int	*len_a, int *len_b)
 		rra(stack_a, 4);
 		if (!is_sorted(stack_a, 4))
 			pb(stack_a, stack_b, len_a, len_b);
+		else
+			return ;
 	}
 	sort_three(stack_a, 'a');
 	pa(stack_a, stack_b, len_b, len_a);
 }
 
-static int	find_second_min(int **stack, int len)
-{
-	int	i;
-	int	min;
-	int	second_min;
-
-	i = 0;
-	min = find_min(stack, len);
-    second_min = find_max(stack, len);
-	while (i < len)
-	{
-		if ((*stack)[i] > (*stack)[min] && (*stack)[i] < (*stack)[second_min])
-            second_min = i;
-        i++;
-	}
-	return (second_min);
-}
-
 void	sort_five(int **stack_a, int **stack_b, int *len_a, int *len_b)
 {
-	int	second_min;
+	int	min_index;
 
-    second_min = find_second_min(stack_a, 5);
-    if (second_min <= 2)
-    {
-        while (second_min-- > 0)
-            ra(stack_a, 5);
-    }
-    else
-    {
-        while (second_min++ < 5)
-            rra(stack_a, 5);
-    }
-    pb(stack_a, stack_b, len_a, len_b);
-    sort_four(stack_a, stack_b, len_a, len_b);
-    pa(stack_a, stack_b, len_b, len_a);
-    if ((*stack_a)[0] > (*stack_a)[1])
-        sa(stack_a, 5);
+	min_index = find_min(stack_a, 5);
+	if (min_index < 2)
+	{
+		if (min_index == 1)
+			sa(stack_a, 5);
+		if (!is_sorted(stack_a, 5))
+			pb(stack_a, stack_b, len_a, len_b);
+		else
+			return ;
+	}
+	else
+	{
+		if (min_index == 2)
+			rra(stack_a, 5);
+		rra(stack_a, 5);
+		if (!is_sorted(stack_a, 5))
+			pb(stack_a, stack_b, len_a, len_b);
+		else
+			return ;
+	}
+	sort_four(stack_a, stack_b, len_a, len_b);
+	pa(stack_a, stack_b, len_b, len_a);
+}
+
+void	pre_sort_b(int **stack_b, int len_b)
+{
+	if ((*stack_b)[0] < (*stack_b)[1])
+		sb(stack_b, len_b);
 }

@@ -25,7 +25,6 @@ void	get_sorted_stack(int **sorted_stack, int **stack_a, int len)
 		i++;
 	}
 	*sorted_stack = selection_sort(placeholder, len);
-    free_stack(&placeholder);
 }
 
 void	chunk_sort_iteration(t_chunk_sort_data *data)

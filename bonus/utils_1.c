@@ -20,11 +20,7 @@ int	is_int(char *str)
 	if (!str)
 		return (0);
 	if (str[i] == '-')
-    {
-        if (!str[i + 1])
-            return (0);
 		i++;
-    }
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))

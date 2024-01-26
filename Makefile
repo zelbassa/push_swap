@@ -14,7 +14,7 @@ OBJ		= $(FILES:.c=.o)
 
 OBJ_B	= $(B_FILES:.c=.o)
 
-CC		= gcc
+CC		= gcc -fsanitize=address
 
 all: $(NAME)
 
