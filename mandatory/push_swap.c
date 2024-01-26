@@ -36,7 +36,7 @@ void	chunk_sort_iteration(t_chunk_sort_data *data)
 		pre_sort_b(data->stack_b, *(data->len_b));
 		if (data->chunk_end < data->length - 1)
 			data->chunk_end++;
-		if (data->chunk_start < data->length - ft_sqrt(data->length) / 2)
+		if (data->chunk_start < data->length - ft_sqrt(data->length) / 3)
 			data->chunk_start++;
 	}
 	else if (data->stack_a[0][0] < data->sorted_stack[data->chunk_start])
@@ -45,7 +45,7 @@ void	chunk_sort_iteration(t_chunk_sort_data *data)
 		rb(data->stack_b, *(data->len_b));
 		if (data->chunk_end < data->length - 1)
 			data->chunk_end++;
-		if (data->chunk_start < data->length - ft_sqrt(data->length) / 2)
+		if (data->chunk_start < data->length - ft_sqrt(data->length) / 3)
 			data->chunk_start++;
 	}
 	else
@@ -63,7 +63,7 @@ void	chunk_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
 	chunk_start = 0;
 	length = *len_a;
 	get_sorted_stack(&sorted_stack, stack_a, *len_a);
-	chunk_end = ft_sqrt(length) * 2;
+	chunk_end = ft_sqrt(length);
 	data.stack_a = stack_a;
 	data.stack_b = stack_b;
 	data.len_a = len_a;
