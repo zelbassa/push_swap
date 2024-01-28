@@ -18,7 +18,7 @@ OBJ		= $(FILES:.c=.o)
 
 OBJ_B	= $(B_FILES:.c=.o)
 
-CC		= cc -fsanitize=address
+CC		= cc -g -fsanitize=address
 
 $(LIBFT):
 	cd libft && make
