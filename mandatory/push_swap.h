@@ -6,14 +6,14 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:59:17 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/25 00:32:34 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/27 22:53:16 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "libft/libft.h"
-# include <stdio.h>
+# define PUSH_SWAP_H 
+# include "../libft/libft.h"
+# include <unistd.h>
 # include <stdlib.h>
 
 typedef struct s_chunk_sort_data

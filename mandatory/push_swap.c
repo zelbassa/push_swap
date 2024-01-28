@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:17:31 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/26 15:45:09 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:12:35 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	chunk_sort_iteration(t_chunk_sort_data *data)
 		pre_sort_b(data->stack_b, *(data->len_b));
 		if (data->chunk_end < data->length - 1)
 			data->chunk_end++;
-		if (data->chunk_start < data->length - ft_sqrt(data->length) / 3)
+		if (data->chunk_start < data->length - ft_sqrt(data->length) / 2)
 			data->chunk_start++;
 	}
 	else if (data->stack_a[0][0] < data->sorted_stack[data->chunk_start])
@@ -45,7 +45,7 @@ void	chunk_sort_iteration(t_chunk_sort_data *data)
 		rb(data->stack_b, *(data->len_b));
 		if (data->chunk_end < data->length - 1)
 			data->chunk_end++;
-		if (data->chunk_start < data->length - ft_sqrt(data->length) / 3)
+		if (data->chunk_start < data->length - ft_sqrt(data->length) / 2)
 			data->chunk_start++;
 	}
 	else
@@ -83,6 +83,8 @@ int	main(int ac, char **av)
 	int	*stack_b;
 	int	len;
 
+	if (ac == 1)
+		return (0);
 	if (ac < 2)
 		error();
 	stack_a = NULL;

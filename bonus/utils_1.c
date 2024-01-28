@@ -5,12 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 15:17:59 by prizmo            #+#    #+#             */
-/*   Updated: 2024/01/27 22:55:57 by zelbassa         ###   ########.fr       */
+/*   Created: 2024/01/27 22:54:58 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/01/27 23:01:17 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
+
+void	error(void)
+{
+	write(2, "Error\n", 6);
+	exit(0);
+}
+
+int	single_arg(char **av, int **stack)
+{
+	int		i;
+	char	**tokens;
+
+	tokens = ft_split(av[1], ' ');
+	i = set_tokens(tokens);
+	if (i == 0)
+		return (0);
+	*stack = malloc(sizeof(int) * i);
+	if (*stack == NULL)
+		return (0);
+	i = 0;
+	while (tokens[i])
+	{
+		(*stack)[i] = ft_atoi(tokens[i]);
+		i++;
+	}
+	return (i);
+}
+
+int	set_tokens(char **tokens)
+{
+	int	i;
+
+	i = 0;
+	if (tokens)
+	{
+		while (tokens[i])
+		{
+			if (is_int(tokens[i]) && within_range(tokens[i]))
+				i++;
+			else
+				error();
+		}
+	}
+	if (i < 2)
+		return (0);
+	return (i);
+}
 
 int	is_int(char *str)
 {
@@ -50,39 +97,4 @@ int	within_range(const char *str)
 	if (ft_strlen(str) == 11 && ft_strcmp(str, min) > 0)
 		return (0);
 	return (1);
-}
-
-void	free_stack(int **stack)
-{
-	free(*stack);
-	*stack = NULL;
-}
-
-int	is_sorted(int **stack, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len - 1)
-	{
-		if ((*stack)[i] > (*stack)[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void	finish_sort(int **stack_a, int **stack_b, int *len_a, int *len_b)
-{
-	int	max_index;
-
-	while (*len_b > 0)
-	{
-		max_index = find_max(stack_b, *len_b);
-		if (max_index <= *len_b / 2)
-			push_up(stack_b, len_b, max_index);
-		else
-			push_down(stack_b, len_b, *len_b - max_index);
-		pa(stack_a, stack_b, len_b, len_a);
-	}
 }

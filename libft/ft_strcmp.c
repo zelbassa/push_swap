@@ -6,9 +6,11 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 11:49:25 by zelbassa          #+#    #+#             */
-/*   Updated: 2024/01/14 11:04:29 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/01/27 22:49:41 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   utils_5.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 17:21:48 by zelbassa          #+#    #+#             */
-/*   Updated: 2024/01/14 10:44:24 by zelbassa         ###   ########.fr       */
+/*   Created: 2024/01/28 17:31:54 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/01/28 17:40:39 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap_bonus.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+void	rrr(int **stack_a, int **stack_b, int len_a, int len_b)
 {
-	size_t	i;
-	size_t	j;
+	rra_b(stack_a, len_a);
+	rrb_b(stack_b, len_b);
+}
 
-	i = 0;
-	j = 0;
-	if (dstsize == 0)
-		return (ft_strlen(src));
-	while (dst[i] && i < dstsize)
-		i ++;
-	while (src[j] && i < dstsize - 1)
-		dst[i++] = src[j++];
-	if (i < dstsize)
-		dst[i] = '\0';
-	while (src[j++])
-		i ++;
-	return (i);
+void	rr(int **stack_a, int **stack_b, int len_a, int len_b)
+{
+	ra_b(stack_a, len_a);
+	rb_b(stack_b, len_b);
+}
+
+void	ss(int **stack_a, int **stack_b, int len_a, int len_b)
+{
+	sa_b(stack_a, len_a);
+	sb_b(stack_b, len_b);
 }
