@@ -20,7 +20,10 @@ int	single_arg(char **av, int **stack)
 	tokens = ft_split(av[1], ' ');
 	i = set_tokens(tokens);
 	if (i == 0)
+	{
+		free_tokens(tokens);
 		return (0);
+	}
 	*stack = malloc(sizeof(int) * i);
 	if (*stack == NULL)
 		return (0);
