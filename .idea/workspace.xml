@@ -17,7 +17,26 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4207a6e-cd97-4159-bd06-9c448e33cb62" name="Changes" comment="Leaks fr this time" />
+    <list default="true" id="c4207a6e-cd97-4159-bd06-9c448e33cb62" name="Changes" comment="Leaks fr this time">
+      <change afterPath="$PROJECT_DIR$/mandatory/utils_8.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/checker.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/checker.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/get_next_line.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/push_swap_bonus.h" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/push_swap_bonus.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/utils_1.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/utils_1.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/utils_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/utils_2.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/utils_3.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/utils_3.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/utils_4.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/utils_4.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/utils_5.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/utils_5.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/is_it_sorting.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libft/ft_substr.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_substr.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mandatory/push_swap.c" beforeDir="false" afterPath="$PROJECT_DIR$/mandatory/push_swap.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mandatory/push_swap.h" beforeDir="false" afterPath="$PROJECT_DIR$/mandatory/push_swap.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mandatory/utils_4.c" beforeDir="false" afterPath="$PROJECT_DIR$/mandatory/utils_4.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mandatory/utils_7.c" beforeDir="false" afterPath="$PROJECT_DIR$/mandatory/utils_7.c" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -194,7 +213,7 @@
       <workItem from="1706296572852" duration="740000" />
       <workItem from="1706297526924" duration="4366000" />
       <workItem from="1706470220846" duration="38000" />
-      <workItem from="1706470266259" duration="452000" />
+      <workItem from="1706470266259" duration="15009000" />
     </task>
     <task id="LOCAL-00001" summary="Leaks fr this time">
       <option name="closed" value="true" />

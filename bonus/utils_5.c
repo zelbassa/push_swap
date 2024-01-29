@@ -29,3 +29,16 @@ void	ss(int **stack_a, int **stack_b, int len_a, int len_b)
 	sa_b(stack_a, len_a);
 	sb_b(stack_b, len_b);
 }
+
+void    free_tokens(char **tokens)
+{
+    int	i;
+
+    i = 0;
+    while (tokens[i])
+    {
+        free(tokens[i]);
+        i++;
+    }
+    free(tokens);
+}

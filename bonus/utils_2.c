@@ -12,14 +12,12 @@
 
 #include "push_swap_bonus.h"
 
-int	is_sorted(int **stack, int *len_a, int *len_b)
+int	is_sorted(int **stack, int len)
 {
 	int	i;
 
 	i = 1;
-	if (*len_b != 0)
-		return (0);
-	while (i < *len_a - 1)
+	while (i < len - 1)
 	{
 		if ((*stack)[i - 1] > (*stack)[i])
 			return (0);
@@ -43,6 +41,7 @@ static int	count_element(char *av)
 	tokens = ft_split(av, ' ');
 	while (tokens[i])
 		i++;
+    free_tokens(tokens);
 	return (i);
 }
 

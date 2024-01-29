@@ -64,5 +64,6 @@ void	sort(int **stack_a, int **stack_b, int len);
 void	fill_elements(char *av, int **stack, int *i);
 void	sort_descending(int **stack_a, int **stack_b, int len);
 int		is_rev_sorted(int **stack, int len);
+void	free_tokens(char **tokens);
 
 #endif

@@ -30,6 +30,7 @@ void	fill_elements(char *av, int **stack, int *i)
 		else
 			error();
 	}
+    free_tokens(tokens);
 }
 
 void	fill_b(int **stack_b, int len)
@@ -38,62 +39,58 @@ void	fill_b(int **stack_b, int len)
 		(*stack_b)[len] = 0;
 }
 
-void	pb_b(int **src, int **dest, int *len_src, int *len_dest)
+void	pb_b(int **stack_a, int **stack_b, int *len_a, int *len_b)
 {
 	int	i;
 	int	j;
 	int	placeholder;
 
 	i = 0;
-	j = 0;
-	if (*len_src == 0)
+	if (*len_a == 0)
 		return ;
-	placeholder = (*src)[0];
-	while (i < (*len_src) - 1)
+	placeholder = (*stack_a)[0];
+	while (i < (*len_a) - 1)
 	{
-		(*src)[i] = (*src)[i + 1];
+		(*stack_a)[i] = (*stack_a)[i + 1];
 		i++;
 	}
-	j = *len_dest;
-	i = 0;
+	j = *len_b;
 	while (j > 0)
 	{
-		(*dest)[j] = (*dest)[j - 1];
+		(*stack_b)[j] = (*stack_b)[j - 1];
 		j--;
 	}
-	(*src)[*len_src - 1] = 0;
-	(*len_src)--;
-	(*len_dest)++;
-	(*dest)[0] = placeholder;
+	(*stack_a)[*len_a - 1] = 0;
+	(*len_a)--;
+	(*len_b)++;
+	(*stack_b)[0] = placeholder;
 }
 
-void	pa_b(int **dest, int **src, int *len_src, int *len_dest)
+void	pa_b(int **stack_a, int **stack_b, int *len_a, int *len_b)
 {
 	int	i;
 	int	j;
 	int	placeholder;
 
-	j = 0;
 	i = 0;
-	if (*len_src == 0)
+	if (*len_b == 0)
 		return ;
-	placeholder = (*src)[0];
-	while (i < (*len_src) - 1)
+	placeholder = (*stack_b)[0];
+	while (i < (*len_b) - 1)
 	{
-		(*src)[i] = (*src)[i + 1];
+		(*stack_b)[i] = (*stack_b)[i + 1];
 		i++;
 	}
-	i = 0;
-	j = *len_dest;
+	j = *len_a;
 	while (j > 0)
 	{
-		(*dest)[j] = (*dest)[j - 1];
+		(*stack_a)[j] = (*stack_a)[j - 1];
 		j--;
 	}
-	(*src)[*len_src - 1] = 0;
-	(*len_src)--;
-	(*len_dest)++;
-	(*dest)[0] = placeholder;
+	(*stack_b)[*len_b - 1] = 0;
+	(*len_b)--;
+	(*len_a)++;
+	(*stack_a)[0] = placeholder;
 }
 
 void	sa_b(int **stack_a, int len_a)

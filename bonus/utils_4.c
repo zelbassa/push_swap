@@ -79,10 +79,10 @@ void	rrb_b(int	**stack_b, int len_b)
 	int	i;
 	int	tmp;
 
-	i = len_b - 1;
-	tmp = (*stack_b)[len_b - 1];
 	if (len_b < 2)
 		return ;
+	i = len_b - 1;
+	tmp = (*stack_b)[len_b - 1];
 	while (i > 0)
 	{
 		(*stack_b)[i] = (*stack_b)[i - 1];

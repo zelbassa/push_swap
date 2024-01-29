@@ -97,7 +97,7 @@ void	*free_all(char **line, char **buffer)
 
 char	*get_next_line(int fd)
 {
-	char static	*line;
+	static char *line;
 	char		*buffer;
 	char		*dest;
 

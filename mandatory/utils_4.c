@@ -30,6 +30,7 @@ int	single_arg(char **av, int **stack)
 		(*stack)[i] = ft_atoi(tokens[i]);
 		i++;
 	}
+    free_tokens(tokens);
 	return (i);
 }
 
@@ -42,6 +43,7 @@ static int	count_element(char *av)
 	tokens = ft_split(av, ' ');
 	while (tokens[i])
 		i++;
+    free_tokens(tokens);
 	return (i);
 }
 

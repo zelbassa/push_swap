@@ -87,7 +87,7 @@ int	main(int ac, char **av)
 		return (0);
 	if (ac < 2)
 		error();
-	stack_a = NULL;
+    stack_a = NULL;
 	len = ac - 1;
 	if (ac == 2)
 		len = single_arg(av, &stack_a);

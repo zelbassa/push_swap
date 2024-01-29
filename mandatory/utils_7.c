@@ -30,6 +30,7 @@ void	fill_elements(char *av, int **stack, int *i)
 		else
 			error();
 	}
+    free_tokens(tokens);
 }
 
 int	find_min(int **stack, int len)

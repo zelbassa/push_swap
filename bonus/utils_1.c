@@ -36,6 +36,7 @@ int	single_arg(char **av, int **stack)
 		(*stack)[i] = ft_atoi(tokens[i]);
 		i++;
 	}
+    free_tokens(tokens);
 	return (i);
 }
 

@@ -28,28 +28,29 @@ static int ft_strncmp(const char *s1, const char *s2, size_t n)
 
 static void	apply_moves(t_stack_data *data, char *l)
 {
-	if (ft_strncmp(l, "sa", 2) == 0)
+
+	if (ft_strncmp(l, "sa", 2) == 0 && ft_strlen(l) == 3)
 		sa_b(data->stack_a, (*data->len_a));
-	else if (ft_strncmp(l, "sb", 2) == 0)
+	else if (ft_strncmp(l, "sb", 2) == 0 && ft_strlen(l) == 3)
 		sb_b(data->stack_b, (*data->len_b));
-	else if (ft_strncmp(l, "ss", 2) == 0)
+	else if (ft_strncmp(l, "ss", 2) == 0 && ft_strlen(l) == 3)
 		ss(data->stack_a, data->stack_b, (*data->len_a), (*data->len_b));
-	else if (ft_strncmp(l, "pa", 2) == 0)
-		pa_b(data->stack_a, data->stack_b, data->len_b, data->len_a);
-	else if (ft_strncmp(l, "pb", 2) == 0)
-		pb_b(data->stack_b, data->stack_a, data->len_a, data->len_b);
-	else if (ft_strncmp(l, "ra", 2) == 0)
-		ra_b(data->stack_a, (*data->len_a));
-	else if (ft_strncmp(l, "rb", 2) == 0)
-		rb_b(data->stack_b, (*data->len_b));
-	else if (ft_strncmp(l, "rr", 2) == 0)
-		rr(data->stack_a, data->stack_b, (*data->len_a), (*data->len_b));
-	else if (ft_strncmp(l, "rra", 3) == 0)
+	else if (ft_strncmp(l, "pa", 2) == 0 && ft_strlen(l) == 3)
+		pa_b(data->stack_a, data->stack_b, data->len_a, data->len_b);
+	else if (ft_strncmp(l, "pb", 2) == 0 && ft_strlen(l) == 3)
+		pb_b(data->stack_a, data->stack_b, data->len_a, data->len_b);
+	else if (ft_strncmp(l, "rra", 3) == 0 && ft_strlen(l) == 4)
 		rra_b(data->stack_a, (*data->len_a));
-	else if (ft_strncmp(l, "rrb", 3) == 0)
+	else if (ft_strncmp(l, "rrb", 3) == 0 && ft_strlen(l) == 4)
 		rrb_b(data->stack_b, (*data->len_b));
-	else if (ft_strncmp(l, "rrr", 3) == 0)
+	else if (ft_strncmp(l, "rrr", 3) == 0 && ft_strlen(l) == 4)
 		rrr(data->stack_a, data->stack_b, (*data->len_a), (*data->len_b));
+	else if (ft_strncmp(l, "ra", 2) == 0 && ft_strlen(l) == 3)
+		ra_b(data->stack_a, (*data->len_a));
+	else if (ft_strncmp(l, "rb", 2) == 0 && ft_strlen(l) == 3)
+		rb_b(data->stack_b, (*data->len_b));
+	else if (ft_strncmp(l, "rr", 2) == 0 && ft_strlen(l) == 3)
+		rr(data->stack_a, data->stack_b, (*data->len_a), (*data->len_b));
 	else
 		error();
 }
@@ -72,9 +73,11 @@ void	check_sort(int **stack_a, int **stack_b, int len)
 	while (l != NULL)
 	{
 		apply_moves(&data, l);
+        free(l);
 		l = get_next_line(0);
 	}
-	if (is_sorted(stack_a, &len_a, &len_b))
+    free(l);
+	if (is_sorted(stack_a, len) && len_b == 0)
 		printf("OK\n");
 	else
 		printf("KO\n");

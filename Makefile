@@ -1,8 +1,8 @@
 NAME	= push_swap
 NAME_B	= checker
 LIBFT	= libft/libft.a
-CFLAGS	= -Wall -Wextra -Werror -I.
-FILES	= mandatory/push_swap.c mandatory/selection_sort.c \
+CFLAGS	= -Wall -Wextra -Werror -I. -g -fsanitize=address
+FILES	= mandatory/push_swap.c mandatory/selection_sort.c mandatory/utils_8.c\
 			mandatory/utils_1.c mandatory/utils_2.c mandatory/utils_3.c \
 			mandatory/utils_4.c mandatory/utils_5.c mandatory/utils_6.c \
 			mandatory/utils_7.c libft/ft_putstr.c libft/ft_atoi.c \
@@ -18,7 +18,7 @@ OBJ		= $(FILES:.c=.o)
 
 OBJ_B	= $(B_FILES:.c=.o)
 
-CC		= cc -g -fsanitize=address
+CC		= cc
 
 $(LIBFT):
 	cd libft && make
@@ -27,8 +27,8 @@ all: $(NAME)
 
 bonus: $(NAME_B)
 
-$(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) -Llibft -lft  -o $(NAME)
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -Llibft -lft -o $(NAME)
 
 $(NAME_B): $(OBJ_B) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ_B) -Llibft -lft -o $(NAME_B)
